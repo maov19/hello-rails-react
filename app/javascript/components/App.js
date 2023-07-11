@@ -1,22 +1,27 @@
 import React, { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 
 import Greeting from './Greeting';
+import { fetchRandomGreeting } from '../actions';
+
 
 function App() {
-//   const dispatch = useDispatch();
-//   useEffect(() => {
-//     dispatch(fetchMissions());
-//     dispatch(fetchRockets());
-//   }, [dispatch]);
+  const dispatch = useDispatch();
+  const randomGreeting = useSelector((state) => state.randomGreeting);
+
+  useEffect(() => {
+    dispatch(fetchRandomGreeting());
+  }, [dispatch]);
 
   return (
     <>
-      {/* <View /> */}
       <Routes>
-        <Route path="/" element={<Greeting />} />
-      </Routes>
+        <Route 
+          path="/" 
+          element={<Greeting randomGreeting={randomGreeting} />}
+        />      
+        </Routes>
     </>
   );
 }

@@ -1,9 +1,9 @@
 import React from "react";
 
-function Greeting() {
+function Greeting({ randomGreeting }) {
   return (
     <>
-      <p>Hey, I'm the greeting section</p>
+      <p>{randomGreeting}</p>
     </>
   );
 }
